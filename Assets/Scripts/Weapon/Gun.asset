@@ -9,14 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 1abbd02dee50bd7438e4d61a618875b6, type: 3}
   m_Name: Gun
   m_EditorClassIdentifier: Assembly-CSharp::Hitscan
-  weaponID: 1
-  weaponName: Pistol
-  weaponDesc: Simple Pistol
-  attackrate: 1
-  damage: 10
+  weaponID: 2
+  weaponName: FAMAS
+  weaponDesc: FAMAS Assult Rifle
+  attackrate: 5
+  damage: 15
   weaponAnimationController: {fileID: 9100000, guid: aca11b2c593095747ac2ed1ce809527b, type: 2}
   sprite: {fileID: -121361910, guid: b0d1c306352380d4f847a8a4b95f0851, type: 3}
-  damageType: Shoot

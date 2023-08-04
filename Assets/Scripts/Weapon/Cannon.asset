@@ -9,17 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 1abbd02dee50bd7438e4d61a618875b6, type: 3}
   m_Name: Cannon
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   weaponID: 3
   weaponName: Cannon
-  weaponDesc: Big Cannon
-  attackrate: 1
-  damage: 50
+  weaponDesc: Grenade Launcher
+  attackrate: 0.5
+  damage: 80
   weaponAnimationController: {fileID: 9100000, guid: 3f445481569d514429694dc554445794, type: 2}
   sprite: {fileID: 2111735620, guid: bdf21f5eaf92f0c498f15985736b8651, type: 3}
-  damageType: Blast
-  projectileSpeed: 25
-  size: 1
-  speed: 15
