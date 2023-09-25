@@ -9,13 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1abbd02dee50bd7438e4d61a618875b6, type: 3}
-  m_Name: Sword
-  m_EditorClassIdentifier: Assembly-CSharp::Arc
-  weaponID: 3
+  m_Script: {fileID: 0}
+  m_Name: Sword 2
+  m_EditorClassIdentifier: Assembly-CSharp::Hitbox
+  weaponID: 4
   weaponName: Sword
-  weaponDesc: Long Sword
+  weaponDesc: Short Sword
   attackrate: 1
   damage: 20
   weaponAnimationController: {fileID: 9100000, guid: 330268cad2f9c8747bacc3fc1379a6a3, type: 2}
   sprite: {fileID: 896098958, guid: bf22a2d669515a64bb9679713f3db4d2, type: 3}
+  hitboxObjectPrefab: {fileID: 1931651209269895473, guid: 45df6f6dc96442f4fad80d237001468a, type: 3}
+  damageType: Slice

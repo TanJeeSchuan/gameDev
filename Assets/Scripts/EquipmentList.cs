@@ -11,7 +11,7 @@ public class EquipmentList : MonoBehaviour
 
     public WeaponBaseClass getEquipedWeapon()
     {
-        Debug.Log(weaponIndex);
+        //Debug.Log(weaponIndex);
         return weaponList[weaponIndex];
     }
     public void cycleWeapon()

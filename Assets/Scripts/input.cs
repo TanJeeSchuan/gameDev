@@ -8,11 +8,6 @@ public class input : MonoBehaviour
     private Vector2 inputVector;
     private Vector2 mousePosition;
     private bool firingState;
-
-    //void Update()
-    //{
-    //    mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    //}
     public Vector2 getXYInput()
     {
         Vector2 inputVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
@@ -25,7 +20,7 @@ public class input : MonoBehaviour
 
     public bool getFiringStatus()
     {
-        firingState = Input.GetButtonDown("Fire1");
+        firingState = Input.GetButton("Fire1");
         return firingState;
     }
 

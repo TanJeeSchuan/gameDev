@@ -17,42 +17,66 @@ public class WeaponBaseClass : ScriptableObject
     public RuntimeAnimatorController weaponAnimationController;
     public Sprite sprite;
 
+    protected float timePassed;
+
     private void Awake()
     {
         weaponID = currentID;
         currentID++;
-
     }
 
+    public virtual GameObject hitboxInstantiate(Transform inputTransform)
+    {
+        return null;
+    }
     public virtual void attack()
     {
-        ;
+        timePassed = Time.deltaTime;
     }
 }
 
 [CreateAssetMenu]
-public class Arc : WeaponBaseClass
+public class Hitbox : WeaponBaseClass
 {
+    [SerializeField]
+    public GameObject hitboxObjectPrefab;
     public string damageType = "Slice";
-    public Angle angle;
-    public float radius;
+
+    void Awake()
+    {
+    }
+
+    IEnumerator attackPause()
+    {
+        yield return new WaitForSeconds(1);
+    }
+    public override GameObject hitboxInstantiate(Transform inputTransform)
+    {
+        GameObject hitboxObject = Instantiate(hitboxObjectPrefab);       //create gameObject
+        hitboxObject.transform.position = inputTransform.position;
+        hitboxObject.transform.rotation = inputTransform.rotation;
+
+        return hitboxObject;
+    }
 
     public override void attack()
     {
-        Debug.Log("Arc Attack");
+        Debug.Log(hitboxObjectPrefab.GetComponent<Collider2D>());
     }
-}
 
-[CreateAssetMenu]
-public class Stab : WeaponBaseClass
-{
-    public string damageType = "Stab";
-    public float range;
+    //private class WeaponAttackCollision : MonoBehaviour
+    //{
+    //    private Arc weaponClass;
+    //    private void OnTriggerStay2D(Collider2D other)
+    //    {
+    //        Health characterHealth = other.GetComponent<Health>();
 
-    public override void attack()
-    {
-        Debug.Log("Stab Attack");
-    }
+    //        if(characterHealth != null)
+    //        {
+    //            characterHealth.modifyHealth(weaponClass.damage);
+    //        }
+    //    }
+    //}
 }
 
 [CreateAssetMenu]
@@ -80,14 +104,26 @@ public class Projectile : WeaponBaseClass
     }
 }
 
-[CreateAssetMenu]
-public class Area : WeaponBaseClass
-{
-    public string damageType = "Energy";
-    public float radius;
+//[CreateAssetMenu]
+//public class Stab : WeaponBaseClass
+//{
+//    public string damageType = "Stab";
+//    public float range;
 
-    public override void attack()
-    {
-        Debug.Log("Area Attack");
-    }
-}
+//    public override void attack()
+//    {
+//        Debug.Log("Stab Attack");
+//    }
+//}
+
+//[CreateAssetMenu]
+//public class Area : WeaponBaseClass
+//{
+//    public string damageType = "Energy";
+//    public float radius;
+
+//    public override void attack()
+//    {
+//        Debug.Log("Area Attack");
+//    }
+//}

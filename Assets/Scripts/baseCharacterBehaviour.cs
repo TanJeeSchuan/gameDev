@@ -3,53 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
-public class baseCharacterBehaviour : MonoBehaviour
+public abstract class baseCharacterBehaviour : MonoBehaviour
 {
-    CharacterMovement CharacterMovement;
-    input playerInput;
-    EquipmentList equipmentList;
-    WeaponSwitch WeaponSwitch;
-    CurrentWeapon currentWeapon;
+    protected EquipmentList equipmentList;
+    protected CurrentWeapon currentWeapon;
+    protected CharacterMovement CharacterMovement;
 
-    Vector2 inputVec;
+    [SerializeField]
+    public Health health;
+    
+
+    protected float timePassed;
     // Start is called before the first frame update
     void Start()
     {
-        CharacterMovement = GetComponent<CharacterMovement>();
         equipmentList = GetComponent<EquipmentList>();
 
         currentWeapon = GetComponentInChildren<CurrentWeapon>();
         currentWeapon.updateEquipedWeapon();
 
+        CharacterMovement = GetComponent<CharacterMovement>();
+
+        OnStarting();
+
         //GameObject Player = transform.GetChild(0).gameObject;
         //playerInput = Player.GetComponent<input>();
         //WeaponSwitch = Player.GetComponent<WeaponSwitch>();
-
-        playerInput = GetComponentInChildren<input>();
-        WeaponSwitch = GetComponentInChildren<WeaponSwitch>();
     }
-
-    // Update is called once per frame
     void Update()
     {
-        inputVec = playerInput.getXYInput();
-        CharacterMovement.move(inputVec);
+        Debug.Log("test");
+        OnUpdate();
+    }
 
-        CharacterMovement.rotate_to_point(playerInput.getMousePos());
-
-        if (playerInput.getWeaponSwitchStatus())
+    protected void attack()
+    {
+        if (timePassed > currentWeapon.currentWeapon.attackrate)
         {
-            WeaponSwitch.cycleWeapon(equipmentList);
-            currentWeapon.updateEquipedWeapon();
-        }
-
-        if (playerInput.getFiringStatus())
-        {
-            attack();
+            currentWeapon.attack();
+            timePassed = 0;
         }
     }
-    void attack()
-    {
-        currentWeapon.attack();
-    }    
+
+    protected abstract void OnStarting();
+    protected abstract void OnUpdate();
 }
